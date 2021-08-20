@@ -11,14 +11,14 @@
 
 % CPMpred*:   individuals' predicted scores (1st dim) with training data (2nd dim) and testing data (3rd dim) 
 
-%% Universal attention connectome lookup table
+%% General attention connectome lookup table
 for e = 1:size(mat_all,1)
     [~, temp_idx] = max(abs(mean(squeeze(mat_all(e,:,1:3)))));
     aa5(e,1) = temp_idx;
     mat_task(e,:) =mat_all(e,:,temp_idx);    clear temp_idx
 end
 
-%% Universal attention modeling
+%% General attention modeling
 nPerm =  size(permList,1);
 meanPCA = 0;    nPCA = 50;    nPLS = 10;    thr = 0.05;
 
@@ -29,24 +29,24 @@ for np = 1:nPerm
         subjTrain = setdiff([1:size(behav_all,1)],subjTest);
         
         matPred(:,subjTest) = c2c_2sets(mat_all(:,subjTrain, 4)', mat_task(:,subjTrain)', mat_all(:,subjTest, 4)', nCompPCA, nCompPLS, meanPCA)';
-        [~, CPMpred_universal(subjTest,1)] = cpm_lr_D1D2_union(mat_task(:,subjTrain), matPred(:,subjTest), mean(behav_all(subjTrain, :), 2), behav_all(subjTest, 1), thr, behav_all(subjTrain, :) );
+        [~, CPMpred_general(subjTest,1)] = cpm_lr_D1D2_union(mat_task(:,subjTrain), matPred(:,subjTest), mean(behav_all(subjTrain, :), 2), behav_all(subjTest, 1), thr, behav_all(subjTrain, :) );
     end
 
     % performance: correlation
-    [temp_R temp_P] = corr(behav_all, squeeze(CPMpred_universal));
-    predCorr_universal.R(:,:,np) = temp_R;    predCorr_universal.P(:,:,np) = temp_P;    clear temp*
+    [temp_R temp_P] = corr(behav_all, squeeze(CPMpred_general));
+    predCorr_general.R(:,:,np) = temp_R;    predCorr_general.P(:,:,np) = temp_P;    clear temp*
 
     % performance: Prediction q^2
     for nf = 1:nFold
         subjTest = permList(np,[subjKlist(nf,1):subjKlist(nf,2)]);
         subjTrain = setdiff([1:size(behav_all,1)],subjTest);
         deno(subjTest,:) = behav_all(subjTest, :) - mean(behav_all(subjTrain, :));
-        nume(subjTest,:) = behav_all(subjTest, :) - CPMpred_universal(subjTest);
+        nume(subjTest,:) = behav_all(subjTest, :) - CPMpred_general(subjTest);
     end
-    predMSE_universal(:, np) = 1 - ( mean(nume.^2) ./mean(deno.^2));    clear deno nume        
+    predMSE_general(:, np) = 1 - ( mean(nume.^2) ./mean(deno.^2));    clear deno nume        
 end;    clear s t1 t2
 
-% save matPred, CPMpred_universal, and pred*_universal files
+% save matPred, CPMpred_general, and pred*_general files
 
 
 
