@@ -1,4 +1,4 @@
-function [CPMperformance, CPMpredictedScore, CPMmask, CPMmodel, CPMmaskPN, CPMperformancePN, CPMpredictedScorePN] = cpm_lr_D1D2_191220(conMat1, conMat2, behav1, behav2, thr, var2control, subOption)
+function [CPMperformance, CPMpredictedScore, CPMmask, CPMmodel, CPMmaskPN, CPMperformancePN, CPMpredictedScorePN] = cpm_lr_D1D2_(conMat1, conMat2, behav1, behav2, thr, var2control, subOption)
 % function [predPerformance1 predPerformance2 y_predict] = cpm_cvMain_lr_ray3(x, y, pthresh, sub_rand, subListKfold)
 % CPM_LR_LOOCV    Predict individual behaviors based on the connectivity matrix constructed from the time-series
 %                   with linear regression (the original methods used in Rosenberg et al. (2016) Nat Neurosci.)
