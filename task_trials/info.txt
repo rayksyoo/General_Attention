@@ -6,7 +6,7 @@ subList_session.mat - subjects included in each task and session
 [All tasks]
 idx - index for subjects included in analysis (see 'subList_total.mat' and 'subList_session.mat')
 mat - trial-wise information. trials x variables x subjects (see 'mat_label')
-time_session - task start & end time
+time_session - scanner start, task start & end time
 time_label - label for 'time_session'
 
 
@@ -23,7 +23,6 @@ VSTM_s1.mat - VSTM session 1
 VSTM_s2.mat - VSTM session 2
 
 mat_label - labels for 'mat' variables (Response: 31: 'match', 30: 'not match' / Response time in sec / Correct: 1: correct response, 0: incorrect / Color match: 1: match, 0: not match)
-StimTime - trial start time
 behav_pashlersK - averaged behavioral performance by Pashler¡'s K for each subject (NaN: excluded data)
 
 
@@ -32,5 +31,5 @@ MOT_s1.mat - MOT session 1
 MOT_s2.mat - MOT session 2
 
 mat_label - labels for 'mat' variables (Target: # of target discs / Response: 1: 'It is one of targets.', 0: 'It is not.' / Response time  in sec / Correct: 1: correct response, 0: incorrect / Probe: total # of discs presented )
-StimDuration - time for stimuli presented on screen
+stimDuration - time for stimuli presented on screen
 behav_accuracy - averaged behavioral performance by percent accuracy for each subject (NaN: excluded data)
