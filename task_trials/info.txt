@@ -24,7 +24,7 @@ VSTM_s2.mat - VSTM session 2
 
 mat_label - labels for 'mat' variables (Response: 31: 'match', 30: 'not match' / Response time in sec / Correct: 1: correct response, 0: incorrect / Color match: 1: match, 0: not match)
 StimTime - trial start time
-PashlersK - averaged behavioral performance by Pashler¡'s K for each subject (NaN: excluded data)
+behav_pashlersK - averaged behavioral performance by Pashler¡'s K for each subject (NaN: excluded data)
 
 
 [MOT]
